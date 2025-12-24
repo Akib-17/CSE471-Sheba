@@ -6,7 +6,7 @@ function ServiceRow({s, onDelete}){
     <div style={{border:'1px solid #ddd', padding:8, marginBottom:8}}>
       <h4>{s.title} <small>({s.category})</small></h4>
       <div>{s.description}</div>
-      <div>Provider: {s.provider_username}</div>
+      <div>Provider: {s.provider_username} {s.provider_unique_id && <span className="small muted">({s.provider_unique_id})</span>}</div>
       <div>Price: {s.price}</div>
       {onDelete && <button onClick={()=>onDelete(s.id)}>Delete</button>}
     </div>

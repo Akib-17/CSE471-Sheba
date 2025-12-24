@@ -14,8 +14,9 @@ services:
       - DATABASE_URL=postgresql://app:secret@db:5432/appdb
       - FLASK_ENV=development
       - JWT_SECRET_KEY=replace-me
+      - FLASK_RUN_PORT=1588
     ports:
-      - '5000:5000'
+      - '1588:1588'
     depends_on:
       - db
   frontend:
