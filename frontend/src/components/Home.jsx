@@ -76,33 +76,34 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
+      {/* Hero Section */}
       <div style={{
-        background: 'linear-gradient(135deg, #EF3E5B 0%, #a82239 100%)',
-        padding: '80px 20px',
+        backgroundColor: '#FFFFFF',
+        padding: '60px 20px 80px', // Adjusted padding
         borderRadius: '0 0 24px 24px',
         marginBottom: 40,
-        color: 'white',
+        color: 'var(--text)',
         textAlign: 'center',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        borderBottom: '1px solid #eee'
       }}>
-        {/* Background Logo Overlay */}
-        <div style={{
-          position: 'absolute',
-          top: '50%', left: '50%',
-          transform: 'translate(-50%, -50%)',
-          opacity: 0.1,
-          pointerEvents: 'none',
-          backgroundImage: `url(${logo})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: 'contain',
-          width: '600px',
-          height: '400px'
-        }} />
 
-        <h1 style={{ color: 'white', marginBottom: 16, position: 'relative' }}>Your Personal Assistant</h1>
-        <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.2rem', marginBottom: 40, position: 'relative' }}>One-stop solution for your services. Order any service, anytime.</p>
+        <img
+          src={logo}
+          alt="Sheba Logo"
+          style={{
+            height: '120px',
+            objectFit: 'contain',
+            marginBottom: '10px', // REDUCED GAP (was 30px)
+            marginTop: '10px',
+            display: 'block',
+            marginInline: 'auto'
+          }}
+        />
+
+        <h1 style={{ color: 'var(--primary)', marginBottom: 16, position: 'relative' }}>Your Personal Assistant</h1>
+        <p style={{ color: '#555', fontSize: '1.2rem', marginBottom: 40, position: 'relative' }}>One-stop solution for your services. Order any service, anytime.</p>
 
         {/* Search Panel */}
         <div style={{
@@ -113,15 +114,16 @@ export default function Home() {
           borderRadius: 16,
           display: 'flex',
           gap: 12,
-          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
           position: 'relative',
-          zIndex: 10
+          zIndex: 10,
+          border: '1px solid #eee'
         }}>
           <div style={{ flex: 1, position: 'relative' }}>
             <select
               value={searchLoc}
               onChange={e => setSearchLoc(e.target.value)}
-              style={{ border: 'none', background: '#F3F4F6', height: '100%' }}
+              style={{ border: '1px solid #eee', background: '#F9FAFB', height: '100%' }}
             >
               <option value="">Select Location</option>
               {LOCATIONS.map(l => <option key={l} value={l}>{l}</option>)}
@@ -131,7 +133,7 @@ export default function Home() {
             <select
               value={searchCat}
               onChange={e => setSearchCat(e.target.value)}
-              style={{ border: 'none', background: '#F3F4F6', height: '100%' }}
+              style={{ border: '1px solid #eee', background: '#F9FAFB', height: '100%' }}
             >
               <option value="">What service do you need?</option>
               {SERVICES.map(s => <option key={s.id} value={s.id}>{s.title}</option>)}

@@ -71,7 +71,7 @@ export default function Header() {
               <button className="btn secondary" style={{ marginLeft: 8 }} onClick={logout}>Logout</button>
             </>
           ) : (
-            <Link to="/login">Login</Link>
+            <Link to="/login" className="btn">Login</Link>
           )}
         </div>
       </div>

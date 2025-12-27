@@ -1,65 +1,44 @@
-# Flask + React Starter (Minimal for Beginners)
+# Sheba - Service Marketplace (CSE471 Project)
 
-This is a minimal starter scaffold for a Flask backend and a React frontend (Vite), intended for new developers learning both frameworks.
+A full-stack web application connecting users with local service providers (Electricians, Plumbers, Salon, etc.). Features real-time chat, location-based matching, and role-based dashboards.
 
-Project structure (minimal):
+## Project Structure
+- `backend/` — Flask API (SQLAlchemy, SocketIO, JWT Auth)
+- `frontend/` — React App (Vite, Axios, Styled Components)
 
-- `backend/` — Flask app and simple API
-- `frontend/` — React app (Vite)
+## Quick Start (Windows)
 
-Quick start — Backend (local, no Docker)
-
+### 1. Backend Setup
 ```powershell
-# from repo root
-Set-Location c:\Users\HAVOC\OneDrive\Desktop\cse471\backend
+cd backend
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-# create instance folder used by SQLite
-if (-not (Test-Path instance)) { mkdir instance }
-# run the app (development)
+
+# Database Setup (Initialize & Seed)
+flask db upgrade
 python manage.py run
 ```
+Backend runs on: `http://localhost:5000`
 
-Open `http://localhost:5000/api/v1/ping` to verify the backend responds.
-
-Quick start — Frontend (Vite dev server)
-
+### 2. Frontend Setup
+Open a new terminal:
 ```powershell
-Set-Location c:\Users\HAVOC\OneDrive\Desktop\cse471\frontend
+cd frontend
 npm install
 npm run dev
 ```
+Frontend runs on: `http://localhost:3000` (or similar)
 
-Open the Vite URL shown in the terminal (usually `http://localhost:5173`) and use the app's UI to call the backend.
+## Features
+- **Role-Based Access**: User & Provider Dashboards.
+- **Real-Time Chat**: Socket.IO powered messaging for service requests.
+- **Search & Filter**: Find providers by category and location.
+- **Automated Pricing**: Providers set their own fee ranges.
 
-Migrations (Flask-Migrate)
-
-If you want to persist models to a database and manage schema changes, use `Flask-Migrate`. From the `backend` folder run:
-
-```powershell
-Set-Location c:\Users\HAVOC\OneDrive\Desktop\cse471\backend
-.\venv\Scripts\Activate.ps1
-# set FLASK_APP for the manage script
-$env:FLASK_APP = 'manage.py'
-# initialize migrations folder (only once)
-python manage.py db init
-# create migration based on models
-python manage.py db migrate -m "initial"
-# apply migration to the database
-python manage.py db upgrade
-```
-
-Notes:
-
-- If you use SQLite (default in `.env.example`), ensure the `instance/` directory exists before running `db upgrade` so the DB file can be created.
-- For Postgres or other production DBs, set `DATABASE_URL` in your environment before running migration commands.
-
-Next steps (suggested):
-
-- Learn Flask basics: add routes, models, and use `flask_sqlalchemy` for persistence.
-- Learn React basics: create components, pages, and call the backend with `axios`.
-- When comfortable, we can add migrations, tests, and Docker for deployment.
+## Troubleshooting
+- **Database Error**: If you see "no such table", run `flask db upgrade` in the `backend` folder.
+- **Socket Error**: Ensure backend is running on port 5000.
 
 If you want, I can now:
 
