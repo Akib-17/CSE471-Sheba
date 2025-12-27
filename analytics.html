@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Analytics & Reports{% endblock %}
+{% block analytics_active %}active{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1><i class="fas fa-chart-line"></i> Analytics & Reports</h1>
+    <button class="btn-custom btn-primary-custom" onclick="exportReport()">
+        <i class="fas fa-download"></i> Export Report
+    </button>
+</div>
+
+<!-- Statistics Cards -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #e3f2fd; color: #2196f3;">
+            <i class="fas fa-bookmark"></i>
+        </div>
+        <h3 id="total-bookings">0</h3>
+        <p>Total Bookings</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #e8f5e9; color: #4caf50;">
+            <i class="fas fa-dollar-sign"></i>
+        </div>
+        <h3 id="total-revenue">৳0</h3>
+        <p>Total Revenue</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #fff3e0; color: #ff9800;">
+            <i class="fas fa-users"></i>
+        </div>
+        <h3 id="total-providers">0</h3>
+        <p>Service Providers</p>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #fce4ec; color: #e91e63;">
+            <i class="fas fa-ad"></i>
+        </div>
+        <h3 id="active-promotions">0</h3>
+        <p>Active Promotions</p>
+    </div>
+</div>
+
+<!-- Most Booked Services Chart -->
+<div class="card-custom">
+    <div class="card-header-custom">
+        <h2><i class="fas fa-chart-bar"></i> Most Booked Services</h2>
+    </div>
+    <div id="services-chart" class="chart-container">
+        <canvas id="servicesCanvas"></canvas>
+    </div>
+</div>
+
+<!-- Top Rated Providers Table -->
+<div class="card-custom">
+    <div class="card-header-custom">
+        <h2><i class="fas fa-star"></i> Top Rated Providers</h2>
+    </div>
+    <div id="providers-table">
+        <div class="loading">
+            <div class="spinner"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Revenue Trends Chart -->
+<div class="card-custom">
+    <div class="card-header-custom">
+        <h2><i class="fas fa-chart-line"></i> Revenue Trends (Last 30 Days)</h2>
+    </div>
+    <div id="revenue-chart" class="chart-container">
+        <canvas id="revenueCanvas"></canvas>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+{% endblock %}
